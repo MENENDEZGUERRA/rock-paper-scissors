@@ -4,13 +4,13 @@ function getComputerChoice(){
     
     switch(computerChoiceSeed){
         case 1:
-            computerChoiceText = "Rock"
+            computerChoiceText = "rock"
             break;
         case 2:
-            computerChoiceText = "Paper"
+            computerChoiceText = "paper"
             break;
         case 3:
-            computerChoiceText = "Scissors"
+            computerChoiceText = "scissors"
             break;
     }
 
@@ -18,7 +18,9 @@ function getComputerChoice(){
 }
 
 
-function playRound(computerSelection, userChoice) {
+function playRound(userChoice) {
+    let computerSelection = getComputerChoice();
+    console.log("The computer selection is: " + computerSelection);
     if(computerSelection == "rock" && userChoice == "paper"){
         return "You Won!";
     }else if (computerSelection == "paper" && userChoice == "rock"){
@@ -46,23 +48,20 @@ function game(){
     let userScore = 0;
     let computerScore = 0;
 
-    for (let i = 0; i <5; i++) {
-        const computerSelection = getComputerChoice().toLowerCase();
-        let userChoice = prompt("Enter your choice (Rock, Paper Scissors): ").toLowerCase();
-        let result = playRound(computerSelection, userChoice);
-        alert("The computer selection is " + computerSelection + " " + result)
+    const computerSelection = getComputerChoice().toLowerCase();
+    let userChoice = prompt("Enter your choice (Rock, Paper Scissors): ").toLowerCase();
+    let result = playRound(computerSelection, userChoice);
+    console.log("The computer selection is " + computerSelection + " " + result)
         
-        if (result == "You Lose!"){
-            computerScore += 1;
-        }else if (result == "You Won!"){
-            userScore += 1;
-        }
+    if (result == "You Lose!"){
+        computerScore += 1;
+    }else if (result == "You Won!"){
+        userScore += 1;
     }
 
-    alert("Computer Score: " + computerScore + " User Score: " + userScore)
+    console.log("Computer Score: " + computerScore + " User Score: " + userScore)
 }
 
-
-
-
-game()
+function reply_click(clicked_id){
+    console.log(playRound(clicked_id));
+}
